@@ -1,0 +1,42 @@
+name: CI
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev, main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+      SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache node_modules Dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-cache-key-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cache-key-
+
+      - name: Use NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm test -- --coverage
+        env:
+          CI: true
+
+      - name: Build Project Application
+        if: github.event_name == 'push'
+        run: npm run build
+
+      - name: Deploy to Stage Endpoint
+        if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+        run: npx surge --project ./build --domain itchy-arithmetic.surge.sh
