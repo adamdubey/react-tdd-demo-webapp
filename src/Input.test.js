@@ -1,22 +1,23 @@
 import React from "react";
-import { shallow } from "enzyme";
-import { checkProps, findByTestAttribute } from "../test/testUtils";
+import { mount } from "enzyme";
+import { findByTestAttribute, checkProps, storeFactory } from "../test/testUtils";
+import { Provider } from "react-redux";
 import Input from "./Input";
 
-/**
- * Setup func for app component
- * @returns {ShallowWrapper}
- */
-const setup = (success = false, secretWord = "ahoy") => {
-  return shallow(<Input success={success} secretWord={secretWord} />);
+const setup = (initialState = {}, secretWord = "party") => {
+  const store = storeFactory(initialState);
+  return mount(
+    <Provider store={store}>
+      <Input secretWord={secretWord} />
+    </Provider>
+  );
 };
 
 describe("render", () => {
   describe("success is false", () => {
     let wrapper;
-
     beforeEach(() => {
-      wrapper = setup(false);
+      wrapper = setup({ success: false });
     });
 
     test("Input renders without error", () => {
@@ -70,7 +71,7 @@ describe("state controlled input field", () => {
   beforeEach(() => {
     mockSetCurrentGuess.mockClear();
     React.useState = () => ["", mockSetCurrentGuess];
-    wrapper = setup(false);
+    wrapper = setup({ success: false });
   });
 
   test("state updates with value of input box upon change", () => {

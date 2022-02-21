@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { guessWord } from "./actions";
 
-function Input({ success, secretWord }) {
+function Input({ secretWord }) {
   const [currentGuess, setCurrentGuess] = React.useState("");
+  const dispatch = useDispatch();
+  const success = useSelector(state => state.success);
 
   if (success) {
     return <div data-test="component-input" />;
@@ -15,7 +19,7 @@ function Input({ success, secretWord }) {
           data-test="input-box"
           className="mb-2 mx-sm-3"
           type="text"
-          placeeholder="enter guess"
+          placeholder="enter guess"
           value={currentGuess}
           onChange={event => setCurrentGuess(event.target.value)}
         />
@@ -24,6 +28,7 @@ function Input({ success, secretWord }) {
           className="btn btn-primary mb-2"
           onClick={evt => {
             evt.preventDefault();
+            dispatch(guessWord(currentGuess));
             setCurrentGuess("");
           }}
         >
