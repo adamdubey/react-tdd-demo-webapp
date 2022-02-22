@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# react-tdd-demo-webapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Test-Driven-Development React.js SPA with CI/CD pipeline support.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Quick Start
 
-### `npm start`
+_Client (webapp):_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+# Install dependencies
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Start the app
+npm run start
 
-### `npm test`
+# in browser, visit http://localhost:3000
+# to STOP, Ctrl+C in Terminal
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+_Server (rand-word-server):_
 
-### `npm run build`
+```sh
+# Install dependencies
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Start the app
+npm run start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# in browser, visit http://localhost:3030
+# to STOP, Ctrl+C in Terminal
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Technologies & Frameworks
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [Axios](https://www.npmjs.com/package/axios)
+- [Create React App](https://reactjs.org/docs/create-a-new-react-app.html)
+- [Enzyme](https://enzymejs.github.io/enzyme/)
+- [Enzyme-Adapter-React-17](https://www.npmjs.com/package/@wojtekmaj/enzyme-adapter-react-17)
+- [Github Workflows](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+- [Moxios](https://github.com/axios/moxios)
+- [Prettier](https://prettier.io/)
+- [Prop-Types](https://www.npmjs.com/package/prop-types)
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Redux-Thunk](https://github.com/reduxjs/redux-thunk)
+- [Surge](https://surge.sh/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Endpoints
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![](https://github.com/adamdubey/react-tdd-demo-webapp/CI/badge.svg?branch=dev&event=push)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [STAGE](http://itchy-arithmetic.surge.sh)
