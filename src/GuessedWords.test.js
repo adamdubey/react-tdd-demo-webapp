@@ -36,13 +36,11 @@ describe("if there are no words guessed", () => {
 
   test("renders without error", () => {
     const component = findByTestAttribute(wrapper, "component-guessed-words");
-
     expect(component.length).toBe(1);
   });
 
   test("renders instructions to user", () => {
     const instructions = findByTestAttribute(wrapper, "guess-instructions");
-
     expect(instructions.text().length).not.toBe(0);
   });
 });
@@ -62,19 +60,16 @@ describe("if there are words guessed", () => {
 
   test("renders without error", () => {
     const component = findByTestAttribute(wrapper, "component-guessed-words");
-
     expect(component.length).toBe(1);
   });
 
   test('renders "guessed words" section', () => {
     const guessedWordsNode = findByTestAttribute(wrapper, "guessed-words");
-
     expect(guessedWordsNode.length).toBe(1);
   });
 
   test("correct number of guessed words", () => {
     const guessedWordsNodes = findByTestAttribute(wrapper, "guessed-word");
-
     expect(guessedWordsNodes.length).toBe(guessedWords.length);
   });
 });
