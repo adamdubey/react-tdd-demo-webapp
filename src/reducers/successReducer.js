@@ -6,6 +6,7 @@ import { actionTypes } from "../actions";
  * @returns {boolean} - new success state
  */
 
+// eslint-disable-next-line
 export default (state = false, action) => {
   switch (action.type) {
     case actionTypes.CORRECT_GUESS:
