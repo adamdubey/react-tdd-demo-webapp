@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getSecretWord } from "./actions";
+import "./App.css";
+import Congrats from "./Congrats";
+import GuessedWords from "./GuessedWords";
+import Input from "./Input";
 
 function App() {
+  const success = useSelector(state => state.success);
+  const guessedWords = useSelector(state => state.guessedWords);
+  const secretWord = useSelector(state => state.secretWord);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSecretWord());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div data-test="component-app" className="container">
+      <h1>Jotto!</h1>
+      <Congrats success={success} />
+      <Input success={success} secretWord={secretWord} />
+      <GuessedWords guessedWords={guessedWords} />
     </div>
   );
 }
